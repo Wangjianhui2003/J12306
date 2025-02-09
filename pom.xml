@@ -14,13 +14,17 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>j12306</name>
 	<description>j12306</description>
+	<packaging>pom</packaging>
+
 	<modules>
 		<module>test</module>
+		<module>j12306-frameworks</module>
 	</modules>
-	<packaging>pom</packaging>
 
 	<properties>
 		<java.version>17</java.version>
+		<skip.checkstyle.check>true</skip.checkstyle.check>
+		<maven-common-plugin.version>3.1.0</maven-common-plugin.version>
 	</properties>
 
 	<dependencyManagement>
@@ -34,6 +38,36 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+				<version>${maven-common-plugin.version}</version>
+				<configuration>
+					<!-- ${maven.multiModuleProjectDirectory} 爆红属于正常，并不影响编译或者运行，忽略就好 -->
+					<configLocation>${maven.multiModuleProjectDirectory}/checkstyle/12306_checkstyle.xml
+					</configLocation>
+					<!-- ${maven.multiModuleProjectDirectory} 爆红属于正常，并不影响编译或者运行，忽略就好 -->
+					<suppressionsLocation>
+						${maven.multiModuleProjectDirectory}/checkstyle/12306_checkstyle_suppression.xml
+					</suppressionsLocation>
+					<!-- Do not scan the test directory for now -->
+					<includeTestSourceDirectory>false</includeTestSourceDirectory>
+					<consoleOutput>true</consoleOutput>
+					<encoding>UTF-8</encoding>
+					<skip>${skip.checkstyle.check}</skip>
+					<violationSeverity>error</violationSeverity>
+				</configuration>
+				<executions>
+					<execution>
+						<id>validate</id>
+						<phase>validate</phase>
+						<goals>
+							<goal>checkstyle</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>

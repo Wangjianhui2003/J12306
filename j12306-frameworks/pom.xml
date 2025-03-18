@@ -15,17 +15,18 @@
     <modules>
         <module>base</module>
         <module>convention</module>
+        <module>user</module>
+        <module>designpattern</module>
+        <module>common</module>
+        <module>database</module>
+        <module>distributedid</module>
+        <module>log</module>
+        <module>web</module>
+        <module>idempotent</module>
+        <module>cache</module>
     </modules>
 
     <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-        </dependency>
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>

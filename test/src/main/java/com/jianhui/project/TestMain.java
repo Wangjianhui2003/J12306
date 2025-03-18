@@ -1,8 +1,9 @@
 package com.jianhui.project;
 
 import com.jianhui.test.teststarter.annotation.EnableJService;
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import java.util.concurrent.ConcurrentHashMap;
 
 
 @EnableJService //自定义的测试starter
@@ -10,6 +11,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class TestMain {
 
     public static void main(String[] args) {
-        SpringApplication.run(TestMain.class);
+        ConcurrentHashMap<Object, Object> map = new ConcurrentHashMap<>();
     }
 }

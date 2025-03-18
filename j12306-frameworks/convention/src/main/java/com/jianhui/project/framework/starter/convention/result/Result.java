@@ -6,6 +6,10 @@ import lombok.experimental.Accessors;
 import java.io.Serial;
 import java.io.Serializable;
 
+/**
+ * @author wjh2
+ * @date 2025/02/28
+ */
 @Data
 @Accessors(chain = true)
 public class Result<T> implements Serializable {

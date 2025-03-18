@@ -9,8 +9,13 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class TestController {
+
+    ThreadLocal<String> threadLocal = new ThreadLocal<>();
+
     @GetMapping("/test")
     String testHandler(){
+        threadLocal.set("test");
+        threadLocal.get();
         return "Hello";
     }
 }
